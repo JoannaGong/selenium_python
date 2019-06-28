@@ -105,7 +105,7 @@ ActionChains(b).move_to_element(ele).perform()
 ```
 
 ## 键盘事件 send_keys()
-from selenium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import Keys
 
 | 表达式 | 说明 |
 | :---:    | :--- |
@@ -115,5 +115,16 @@ from selenium.webdriver.common.keys import keys
 | send_keys(Keys.CONTRL, 'c')() | 复制 |
 | send_keys(Keys.CONTRL, 'x') | 剪切 |
 | send_keys(Keys.ENTER) | 回车 |
+
+```
+ele = b.find_element_by_id('js_keyword')
+from selenium.webdriver.common.keys import Keys
+ele.send_keys('python')
+ele.send_keys(Keys.BACKSPACE)
+```
+
+
+# 对话框处理与登陆测试
+
 
 
