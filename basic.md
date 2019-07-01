@@ -124,7 +124,58 @@ ele.send_keys(Keys.BACKSPACE)
 ```
 
 
-# 对话框处理与登陆测试
+# 多窗口切换
+
+* current_window_handle：获得当前窗口句柄。
+
+* window_handles：返回所有窗口的句柄到当前会话。
+
+* switch_to.window()：用于切换到相应的窗口
 
 
+# 等待页面加载完成
+
+* time.sleep()
+
+* implicitly_wait()   隐式等待
+隐式等待是一个全局设置，设置后所有的元素定位都会等待给定的时间，直到元素出现为止，等待规定时间元素没出现就报错
+
+* WebDriverWait()   显示等待
+WebDriverWait()里填driver和要等待的时间，until里填等待的元素
+```
+from selenium.webdriver.support.ui import WebDriverWait
+element = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "search-show"))
+    )
+```
+
+就是设置一个等待时间，直到这个元素出现就停止等待，如果没出现就抛出异常。
+比如设置10秒等待时间，如果等待第6秒这个元素就出现了，就停止等待，继续往下执行，如果第10秒元素还没出现，就抛出异常
+
+
+
+# alert 对话框处理
+
+switch_to_alert  切换到 alert
+accept  确认
+dismiss  取消
+
+```
+from selenium import webdriver
+import time
+driver = webdriver.Chrome()
+driver.get('G:/selenium/index.html')
+
+driver.find_element_by_id('alert').click()
+abc = driver.switch_to.alert
+time.sleep(2)
+abc.accept()
+
+driver.quit()
+```
+
+
+# 测试脚本模块化和数据隔离
+
+OpenBrowser / OpenUrl / FindElement / SendKeys / CheckResult
 
